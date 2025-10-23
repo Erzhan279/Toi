@@ -1,325 +1,163 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ержан & Аяжан — Тойға шақырамыз</title>
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ержан & Аяжан | Той шақыру</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --gold:#c89b2b;
-    --gold-2:#e0b84a;
-    --muted:#444;
-    --glass: rgba(255,255,255,0.72);
-    --card: rgba(255,255,255,0.9);
-  }
-  html,body{height:100%;margin:0;font-family:"Poppins",system-ui, sans-serif;background:#fffaf2;color:var(--muted)}
-  /* Background image + soft golden overlay */
-  .hero-bg{
-    position:fixed; inset:0; z-index:-2;
-    background: center/cover no-repeat url('assets/bg.jpg');
-    filter: blur(0.6px) saturate(1.05);
-  }
-  .bg-overlay{
-    position:fixed; inset:0; z-index:-1;
-    background: linear-gradient(180deg, rgba(255,250,245,0.55), rgba(255,245,230,0.55));
-    mix-blend-mode: multiply;
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    background: #000;
   }
 
-  main.container{max-width:980px;margin:28px auto;padding:28px}
-  header.top{
-    text-align:center;padding:36px 12px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.75));
-    box-shadow: 0 8px 40px rgba(12,10,8,0.08); border:1px solid rgba(200,170,90,0.1);
-    backdrop-filter: blur(6px);
+  /* Фон */
+  .hero {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
-  h1.title{font-family:"Dancing Script",cursive;font-size:54px;margin:6px 0;color:var(--gold); text-shadow: 0 6px 18px rgba(200,150,40,0.08); letter-spacing:1px}
-  p.lead{margin:6px 0 10px;font-size:18px;color:#333; max-width:760px;margin-left:auto;margin-right:auto}
-  .sub{color:var(--muted);font-weight:600;margin-top:6px}
-
-  /* Countdown */
-  .countdown{
-    display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap;
+  /* Қара жартылай фильтр */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(1.5px);
   }
-  .countdown .box{
-    background:var(--card);padding:12px 18px;border-radius:12px;min-width:110px;
-    box-shadow: 0 10px 30px rgba(12,10,8,0.06); text-align:center;
+
+  /* Негізгі мәтін */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 3s ease;
   }
-  .countdown .big{font-size:20px;font-weight:700;color:var(--muted)}
-  .countdown .tiny{font-size:13px;color:#6b6b6b}
 
-  /* CTA */
-  .cta{display:flex;gap:12px;justify-content:center;margin-top:20px}
-  .btn{
-    background: linear-gradient(90deg,var(--gold),var(--gold-2));
-    color:#071018;border:0;padding:12px 20px;border-radius:24px;font-weight:700;cursor:pointer;box-shadow: 0 8px 24px rgba(200,150,40,0.12);
-    transition: transform .18s, box-shadow .18s;
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 70px;
+    color: gold;
+    text-shadow: 0 0 15px rgba(255,215,0,0.8);
+    margin: 0;
   }
-  .btn:hover{transform:translateY(-4px); box-shadow: 0 12px 40px rgba(200,150,40,0.18)}
-  .btn.secondary{background:transparent;border:1px solid rgba(0,0,0,0.06); color:var(--muted); font-weight:600}
 
-  /* Details + map */
-  .card{margin-top:26px;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95)); box-shadow: 0 10px 30px rgba(12,10,8,0.04)}
-  .flex{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
-  .left{flex:1;min-width:260px}
-  .right{flex:1;min-width:260px}
-
-  .venue{font-weight:700;color:var(--muted);margin-bottom:8px}
-  .note{color:#666;margin-top:8px}
-
-  iframe.map{width:100%;height:320px;border:0;border-radius:10px;overflow:hidden}
-
-  /* subtle floating golden sparkles */
-  .sparkle{
-    position:fixed; width:8px;height:8px;border-radius:50%;background:linear-gradient(90deg,var(--gold),var(--gold-2)); opacity:0.9; filter:blur(0.2px);
-    animation: floatUp linear infinite;
-    z-index:0;
+  h3 {
+    margin-top: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
   }
-  @keyframes floatUp{ from{transform:translateY(20vh) scale(.8)} to{transform:translateY(-30vh) scale(1.2)} }
 
-  /* gallery */
-  .gallery{display:flex;gap:8px;overflow:hidden;margin-top:16px;border-radius:10px}
-  .gallery img{width:33%;height:140px;object-fit:cover;border-radius:8px;transition:transform .45s}
-  .gallery img:hover{transform:scale(1.06)}
+  p {
+    max-width: 700px;
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 1.8;
+  }
 
-  /* guest list & rsvp */
-  .rsvp-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px}
-  input.gname{padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);min-width:220px}
-  .result{margin-top:12px;color:var(--muted);font-weight:600}
+  /* Батырма */
+  .btn {
+    background: linear-gradient(45deg, gold, #ffb700);
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.4s;
+  }
+  .btn:hover { transform: scale(1.07); background: gold; }
 
-  footer{margin-top:26px;text-align:center;color:#8a8a8a;font-size:13px}
+  /* Анимация */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-  /* responsive */
-  @media (max-width:720px){h1.title{font-size:36px}.gallery img{height:100px}}
+  /* Гүлдер мен жүрек анимация */
+  .petal {
+    position: fixed;
+    width: 25px; height: 25px;
+    background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
+    animation: fall 8s linear infinite;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  footer {
+    padding: 40px;
+    background: rgba(0,0,0,0.85);
+    font-size: 16px;
+  }
+
+  .map {
+    margin-top: 30px;
+  }
+
+  iframe {
+    width: 90%;
+    height: 300px;
+    border: none;
+    border-radius: 15px;
+  }
 </style>
 </head>
+
 <body>
 
-  <!-- background -->
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="bg-overlay" aria-hidden="true"></div>
+<!-- Музыка -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/07/06/audio_aa273f57fa.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- floating sparkles (decor) -->
-  <div id="sparkles" aria-hidden="true"></div>
+<!-- Фон секция -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Ержан & Аяжан</h1>
+    <h3>01 Қазан 2025 | Тараз қаласы</h3>
+    <p>
+      Құрметті ағайын-туыс, бауырлар мен достар!  
+      Сіздерді жүрегіміздің төрінен шақырамыз — өміріміздегі ең қуанышты күн,  
+      махаббат пен бақыт тоғысқан <b>үйлену тойымызға!</b>  
+      Осы сәтті бірге бөлісу біз үшін зор мәртебе болмақ.  
+      Келіңіздер, қуанышымыздың куәсі болыңыздар!
+    </p>
+    <a href="#map" class="btn">Той өтетін орын</a>
+  </div>
+</section>
 
-  <main class="container">
-    <header class="top">
-      <h1 class="title">Ержан &amp; Аяжан</h1>
-      <p class="lead">Құрметті қонақ! Сіздерді шын жүректен біздің тойға шақырамыз. Қуанышымыз ортақ болсын — келіп жүздесіңіз!</p>
-      <div class="sub">01 Қазан 2025 — 18:00 • ToiPro тойханасы, Тараз қаласы</div>
+<!-- Карта -->
+<div id="map" class="map">
+  <h2>📍 ToiPro тойханасы</h2>
+  <iframe src="https://2gis.kz/taraz/geo/70000001051334510/71.364836,42.894600" allowfullscreen></iframe>
+</div>
 
-      <!-- countdown -->
-      <div class="countdown" id="countdown">
-        <div class="box"><div class="big" id="days">0</div><div class="tiny">Күн</div></div>
-        <div class="box"><div class="big" id="hours">0</div><div class="tiny">Сағат</div></div>
-        <div class="box"><div class="big" id="minutes">0</div><div class="tiny">Минут</div></div>
-        <div class="box"><div class="big" id="seconds">0</div><div class="tiny">Секунд</div></div>
-      </div>
+<footer>
+  <p>© 2025 Ержан & Аяжан | Сүйіспеншілікпен жасалған 💛</p>
+</footer>
 
-      <div class="cta">
-        <button class="btn" id="play-toggle">Музыканы тоқтату</button>
-        <button class="btn secondary" id="gallery-open">Галерея</button>
-      </div>
-    </header>
-
-    <!-- details card -->
-    <section class="card">
-      <div class="flex">
-        <div class="left">
-          <div class="venue">Той өтетін орын</div>
-          <div>ToiPro тойханасы, Тараз қаласы</div>
-          <p class="note">Келу үшін алдын ала хабарлассаңыз ыңғайлы: тойдың күні дәл келуіңізді өтінеміз. Қонақтарымызға ыңғайлы орын дайындалады.</p>
-
-          <div class="gallery" id="gallery">
-            <img src="assets/photo1.jpg" alt="той суреті 1">
-            <img src="assets/photo2.jpg" alt="той суреті 2">
-            <img src="assets/photo3.jpg" alt="той суреті 3">
-          </div>
-
-          <div class="rsvp-row">
-            <input class="gname" id="guest-name" placeholder="Аты-жөніңіз" />
-            <button class="btn" id="btn-coming">Келемін</button>
-            <button class="btn secondary" id="btn-notcoming">Келе алмаймын</button>
-          </div>
-          <div class="result" id="rsvp-result"></div>
-        </div>
-
-        <div class="right">
-          <div class="venue">Карта</div>
-          <iframe class="map" src="https://2gis.kz/taraz/geo/70000001051334510/71.364836,42.894600" loading="lazy"></iframe>
-
-          <div style="margin-top:12px;color:#666;font-size:14px">Адрес: ToiPro тойханасы — Tараз қаласы. Картаны ашып, бағыт алыңыз.</div>
-
-          <div style="margin-top:14px">
-            <div style="font-weight:700;margin-bottom:8px;color:var(--muted)">Қонақтар тізімі (локал)</div>
-            <ul id="list-coming" style="padding-left:18px;color:#444"></ul>
-            <div style="height:10px"></div>
-            <ul id="list-notcoming" style="padding-left:18px;color:#444"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© 2025 Ержан &amp; Аяжан — ToiPro</div>
-    </footer>
-  </main>
-
-  <!-- audio (royalty-free music файлын assets/music.mp3 деп жүкте) -->
-  <audio id="bg-audio" loop crossorigin="anonymous">
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
-
+<!-- Гүл анимация генерациясы -->
 <script>
-/* ========== Config (өзгертуге болады) ========== */
-const CONFIG = {
-  weddingISO: "2025-10-01T18:00:00", // той уақыты (ISO)
-  names: "Ержан & Аяжан",
-  venue: "ToiPro тойханасы, Тараз",
-  // Егер Google Apps Script URL-ін қойғың келсе, қою: rsvpEndpoint: "https://script.google.com/macros/s/XXX/exec"
-  rsvpEndpoint: "" // бос қалса — локаль сақтау
-};
-/* =============================================== */
-
-/* Музыка басқару */
-const audio = document.getElementById('bg-audio');
-const playToggle = document.getElementById('play-toggle');
-let playing = false;
-function tryPlay(){
-  audio.volume = 0.65;
-  audio.play().then(()=>{ playing=true; playToggle.textContent="Музыканы тоқтату"; })
-  .catch(()=>{ playing=false; playToggle.textContent="Музыканы қосу (басып ашыңыз)"; });
-}
-tryPlay();
-
-playToggle.addEventListener('click', ()=>{
-  if(playing){ audio.pause(); playing=false; playToggle.textContent="Музыканы қосу"; }
-  else{ tryPlay(); }
-});
-
-/* санақ (countdown) */
-const weddingTime = new Date(CONFIG.weddingISO).getTime();
-const elDays = document.getElementById('days');
-const elHours = document.getElementById('hours');
-const elMinutes = document.getElementById('minutes');
-const elSeconds = document.getElementById('seconds');
-
-function tick(){
-  const now = Date.now();
-  let diff = weddingTime - now;
-  if(diff <= 0){
-    elDays.textContent = 0; elHours.textContent = 0; elMinutes.textContent = 0; elSeconds.textContent = 0;
-    document.getElementById('countdown').innerHTML = "<div style='font-weight:700;color:var(--gold);font-size:18px'>🎉 Той басталды!</div>";
-    clearInterval(timerInterval);
-    return;
+  for (let i = 0; i < 15; i++) {
+    let petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(petal);
   }
-  const d = Math.floor(diff / (1000*60*60*24));
-  diff -= d*(1000*60*60*24);
-  const h = Math.floor(diff / (1000*60*60));
-  diff -= h*(1000*60*60);
-  const m = Math.floor(diff / (1000*60));
-  diff -= m*(1000*60);
-  const s = Math.floor(diff/1000);
-  elDays.textContent = d; elHours.textContent = h; elMinutes.textContent = m; elSeconds.textContent = s;
-}
-tick();
-const timerInterval = setInterval(tick, 1000);
-
-/* RSVP handlers: жергілікті көрсеткіш пен optional Google Script POST */
-const nameInput = document.getElementById('guest-name');
-const btnComing = document.getElementById('btn-coming');
-const btnNot = document.getElementById('btn-notcoming');
-const result = document.getElementById('rsvp-result');
-const listC = document.getElementById('list-coming');
-const listN = document.getElementById('list-notcoming');
-
-function appendLocal(name, status){
-  const li = document.createElement('li');
-  li.textContent = name + " — " + (new Date()).toLocaleString();
-  if(status === "coming") listC.prepend(li);
-  else listN.prepend(li);
-}
-
-/* optional send to Google Apps Script if rsvpEndpoint provided */
-async function postRSVP(payload){
-  if(!CONFIG.rsvpEndpoint) return {ok:false, msg:"no endpoint"};
-  try{
-    const res = await fetch(CONFIG.rsvpEndpoint, {
-      method: "POST",
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    });
-    const text = await res.text();
-    return {ok:true, msg:text};
-  }catch(e){
-    return {ok:false, msg:e.message};
-  }
-}
-
-async function handleRSVP(status){
-  const nm = (nameInput.value || "").trim();
-  if(!nm){ result.textContent = "Өтініш, аты-жөніңізді енгізіңіз."; return; }
-  result.textContent = "Жіберілуде...";
-  const payload = { name: nm, response: status, time: new Date().toISOString(), event: CONFIG.names, date: CONFIG.weddingISO };
-  const res = await postRSVP(payload);
-  if(res.ok){
-    result.textContent = "Рахмет! Сіздің жауабыңыз жазылды.";
-  } else {
-    result.textContent = "Жауабыңыз локал түрде көрініс тапты. (Егер сервер орнатсаңыз, автоматты сақталады.)";
-  }
-  appendLocal(nm, status);
-  nameInput.value = "";
-}
-
-btnComing.addEventListener('click', ()=> handleRSVP("Келемін"));
-btnNot.addEventListener('click', ()=> handleRSVP("Келе алмаймын"));
-
-/* gallery click to full (simple) */
-document.getElementById('gallery-open').addEventListener('click', ()=>{
-  const imgs = Array.from(document.querySelectorAll('#gallery img')).map(i=>i.src);
-  if(imgs.length===0) return;
-  // open first in new tab (simple)
-  window.open(imgs[0], '_blank');
-});
-
-/* sparkles decoration */
-(function spawnSparkles(){
-  const container = document.getElementById('sparkles');
-  const count = 9;
-  for(let i=0;i<count;i++){
-    const s = document.createElement('div');
-    s.className='sparkle';
-    s.style.left = (Math.random()*100)+'vw';
-    s.style.top = (30 + Math.random()*50)+'vh';
-    s.style.opacity = 0.8 - Math.random()*0.4;
-    s.style.animationDuration = (6 + Math.random()*8)+'s';
-    s.style.transform = `translateY(${20 + Math.random()*40}vh)`;
-    container.appendChild(s);
-  }
-})();
-
-/* graceful fallback: try to play audio on first user interaction if blocked */
-function resumeAudio(){
-  tryPlay();
-  window.removeEventListener('pointerdown', resumeAudio);
-  window.removeEventListener('keydown', resumeAudio);
-}
-window.addEventListener('pointerdown', resumeAudio);
-window.addEventListener('keydown', resumeAudio);
-
-/* Small: if no assets images exist, replace gallery images with inline SVG placeholders */
-(function checkAssets(){
-  const imgs = document.querySelectorAll('#gallery img');
-  imgs.forEach(img=>{
-    fetch(img.src, {method:'HEAD'}).catch(()=>{
-      // if fetch fails, replace with placeholder base64 svg
-      img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="#fff8ed"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#b8860b" font-family="Poppins,sans-serif" font-size="20">Той суреті</text></svg>`);
-    });
-  });
-})();
 </script>
+
 </body>
 </html>
