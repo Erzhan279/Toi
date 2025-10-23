@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="page-title">Тойға шақыру</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0b1220">
+</head>
+<body>
+  <div class="bg">
+    <canvas id="particles"></canvas>
+    <div class="overlay"></div>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <h1 id="names" class="fade-up"></h1>
+      <p id="date" class="fade-up delay-1"></p>
+      <div class="controls fade-up delay-2">
+        <button id="play-toggle" class="btn">Музыка: Ойнату</button>
+        <a id="map-link" target="_blank" class="btn outline">Картаға көру</a>
+      </div>
+    </header>
+
+    <section class="about glass fade-up delay-3">
+      <h2>Той өтетін орын</h2>
+      <div class="map-wrap">
+        <iframe id="map-iframe" src="" width="100%" height="320" style="border:0;" loading="lazy"></iframe>
+      </div>
+      <p class="note">Егер орын өзгерсе — авторға хабарлаңыз, сайт жаңартылады.</p>
+    </section>
+
+    <section class="rsvp glass fade-up delay-4">
+      <h2>RSVP — Қатысу/Қатыспау</h2>
+      <p>Өз атыңды жазып, келетінін не келмейтінін белгілеңіз. Сондай-ақ WhatsApp арқылы хабарлама жіберіледі.</p>
+      <input id="guest-name" type="text" placeholder="Аты-жөніңіз (міндетті)" />
+      <div class="rsvp-buttons">
+        <button id="coming" class="btn success">Келемін</button>
+        <button id="not-coming" class="btn danger">Келе алмаймын</button>
+      </div>
+      <p id="rsvp-result" class="result"></p>
+    </section>
+
+    <section class="guest-list glass fade-up delay-5">
+      <h3>Қонақтар — Жеке көрініс (авторға арналған)</h3>
+      <p class="small">Ескерту: автоматты тізім тек rsvpEndpoint орнатқанда толтырылады.</p>
+      <div id="guest-lists" class="lists">
+        <div><h4>Келетіндер</h4><ul id="list-coming"></ul></div>
+        <div><h4>Келмейтіндер</h4><ul id="list-notcoming"></ul></div>
+      </div>
+    </section>
+
+    <footer class="credits">
+      <p>Жасалған — <strong>ToiPro</strong> (автор: сен) • GitHub Pages арқылы тегін жариялау</p>
+    </footer>
+  </main>
+
+  <audio id="bg-music" loop crossorigin="anonymous"></audio>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
