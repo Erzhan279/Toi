@@ -3,167 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ержан & Аяжан | Тойға шақыру</title>
+<title>Ержан & Аяжан | Той шақыру</title>
 
-<!-- Шрифттер -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, #fffaf2, #f9e9c7);
-  overflow-x: hidden;
+  background: #fffaf2;
   color: #3b2d1a;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* Жарқырау эффектісі */
-.sparkle {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 1%, transparent 1%);
-  background-size: 5px 5px;
-  animation: sparkleMove 10s linear infinite;
+/* ===== Фон ===== */
+.hero {
+  position: relative;
+  background: url('FON_SURETING_OSY_JERGE_QOS') no-repeat center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
-@keyframes sparkleMove {
-  from { background-position: 0 0; }
-  to { background-position: 100% 100%; }
+.hero::after {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.45);
 }
-
-/* Тақырып */
-header {
-  padding-top: 120px;
-}
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 75px;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.6);
-  margin-bottom: 0;
-}
-h2 {
-  font-weight: 400;
-  letter-spacing: 1px;
-  margin-top: 10px;
-}
-hr {
-  width: 100px;
-  height: 3px;
-  background: #d4af37;
-  border: none;
-  margin: 30px auto;
-  border-radius: 5px;
-}
-
-/* Негізгі мәтін */
-.invite-text {
-  max-width: 750px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.8;
-  padding: 0 20px;
-  animation: fadeIn 2s ease;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeIn 3s ease;
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
-/* Батырма */
+/* ===== Тақырыптар ===== */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 60px;
+  margin: 0;
+  color: gold;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: #f9e79f;
+}
+
+/* ===== Негізгі мәтін ===== */
+.invite-text {
+  background: linear-gradient(180deg, #fffaf2, #f9efd0);
+  padding: 60px 25px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a3b1f;
+}
+.invite-text b { color: #d4af37; }
+
+/* ===== Кнопка ===== */
 .btn {
   display: inline-block;
-  margin-top: 25px;
-  background: linear-gradient(45deg, #d4af37, #f8d776);
-  color: #fff;
-  padding: 14px 35px;
+  margin-top: 20px;
+  background: linear-gradient(45deg, #28a745, #66d17d);
+  color: white;
+  padding: 12px 40px;
   border-radius: 30px;
-  text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  text-decoration: none;
   transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .btn:hover {
-  transform: scale(1.05);
-  background: #e5c158;
+  transform: scale(1.06);
 }
 
-/* Музыка */
-audio {
-  display: none;
-}
-
-/* Карта */
+/* ===== Карта ===== */
 .map {
-  margin-top: 50px;
+  background: #fff;
+  padding: 50px 0;
 }
 iframe {
   width: 90%;
   height: 350px;
-  border: 2px solid #d4af37;
+  border: 3px solid #28a745;
   border-radius: 15px;
-  margin-bottom: 50px;
 }
 
-/* Жүрек анимация */
+/* ===== Footer ===== */
+footer {
+  background: #fff8e7;
+  padding: 25px;
+  font-size: 15px;
+  color: #5a4a2a;
+}
+
+/* ===== Жүрек анимация ===== */
 .heart {
   position: fixed;
   bottom: 0;
   width: 25px; height: 25px;
   background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
   animation: float 8s linear infinite;
+  opacity: 0.8;
 }
 @keyframes float {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
-}
-
-/* Footer */
-footer {
-  background: #fff8e7;
-  padding: 25px;
-  color: #4a3b1f;
-  font-size: 16px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sparkle"></div>
-
-<!-- Музыка -->
+<!-- ===== Фон музыка ===== -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/09/04/audio_63e6e9b69a.mp3" type="audio/mpeg">
+  <source src="MUZYKA_FAILYNY_OSY_JERGE_QOS" type="audio/mpeg">
 </audio>
 
-<header>
-  <h1>Ержан & Аяжан</h1>
-  <h2>01 Қазан 2025 | Тараз қаласы</h2>
-</header>
-
-<hr>
-
-<section class="invite-text">
-  <p>Құрметті ағайын-туыс, бауырлар мен қадірлі достар!</p>
-  <p>Сіздерді өміріміздің ең қуанышты сәтіне — біздің <b>үйлену тойымызға</b> шақырамыз!  
-  Бұл күн — екі жүректің қосылған күні, ата-ана аманаты мен жақындардың батасы тоғысқан сәт.</p>
-  <p>Бірге шаттанып, қуанышымызды бөлісуіңіз біз үшін ең үлкен бақыт!</p>
-  <p><b>Мекенжай:</b> Тараз қаласы, “ToiPro” тойханасы</p>
-  <a href="#map" class="btn">Той өтетін орын</a>
+<!-- ===== Басты бөлім ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Ержан & Аяжан</h1>
+    <h2>01 Қазан 2025 | Тараз қаласы</h2>
+  </div>
 </section>
 
+<!-- ===== Шақыру мәтіні ===== -->
+<section class="invite-text">
+  <p>Құрметті ағайын-туыс, бауырлар мен қадірлі достар!</p>
+  <p>Сіздерді өміріміздің ең қуанышты сәтіне — <b>үйлену тойымызға</b> шақырамыз!</p>
+  <p>Бұл күн — екі жүректің махаббатпен тоғысқан, ата-ананың батасымен бекіген мереке.</p>
+  <p>Қуанышымызды бөлісіп, шаттыққа ортақ болуға асығыңыздар!</p>
+  <a href="#map" class="btn">📍 Той өтетін орын</a>
+</section>
+
+<!-- ===== Карта ===== -->
 <section id="map" class="map">
   <iframe src="https://2gis.kz/taraz/geo/70000001051334510/71.364836,42.894600" allowfullscreen></iframe>
 </section>
 
+<!-- ===== Footer ===== -->
 <footer>
-  <p>© 2025 Ержан & Аяжан — Махаббатқа толы шақыру 💛</p>
+  © 2025 Ержан & Аяжан | Махаббат пен береке жолында 💛
 </footer>
 
+<!-- ===== Жүрек анимация скрипт ===== -->
 <script>
-// Жүрек анимация генерациясы
 for (let i = 0; i < 15; i++) {
   let heart = document.createElement('div');
   heart.classList.add('heart');
