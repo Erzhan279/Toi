@@ -1,65 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title id="page-title">Тойға шақыру</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ержан & Аяжанның Тойы</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <meta name="theme-color" content="#0b1220">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #fffdf7, #fff8e7);
+      color: #333;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    h1 {
+      font-family: "Dancing Script", cursive;
+      font-size: 3em;
+      color: #b8860b;
+      animation: fadeIn 3s ease;
+    }
+    h2 {
+      color: #444;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      font-size: 1.3em;
+      color: #b8860b;
+      margin-bottom: 30px;
+      animation: fadeIn 3s ease 1s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .countdown {
+      font-size: 1.2em;
+      color: #555;
+      margin: 20px 0;
+    }
+    .buttons {
+      margin-top: 25px;
+    }
+    button {
+      background: #b8860b;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 28px;
+      font-size: 1.1em;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #d4af37;
+      transform: scale(1.05);
+    }
+    iframe {
+      border: 0;
+      width: 90%;
+      height: 300px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    /* гүл эффекті */
+    .petal {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <div class="bg">
-    <canvas id="particles"></canvas>
-    <div class="overlay"></div>
+  <h1>Ержан & Аяжан</h1>
+  <div class="subtitle">Біздің қуанышымызға қош келдіңіз!</div>
+
+  <h2>Той өтетін орын:</h2>
+  <p>Тараз қаласы, ToiPro тойханасы</p>
+  <a href="https://2gis.kz/taraz/geo/70000001051334510/71.364836,42.894600" target="_blank">
+    👉 2GIS арқылы көру
+  </a>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="buttons">
+    <button onclick="respond('Келемін ✅')">Келемін ✅</button>
+    <button onclick="respond('Келе алмаймын ❌')">Келе алмаймын ❌</button>
   </div>
 
-  <main class="container">
-    <header class="hero">
-      <h1 id="names" class="fade-up"></h1>
-      <p id="date" class="fade-up delay-1"></p>
-      <div class="controls fade-up delay-2">
-        <button id="play-toggle" class="btn">Музыка: Ойнату</button>
-        <a id="map-link" target="_blank" class="btn outline">Картаға көру</a>
-      </div>
-    </header>
+  <div id="response"></div>
 
-    <section class="about glass fade-up delay-3">
-      <h2>Той өтетін орын</h2>
-      <div class="map-wrap">
-        <iframe id="map-iframe" src="" width="100%" height="320" style="border:0;" loading="lazy"></iframe>
-      </div>
-      <p class="note">Егер орын өзгерсе — авторға хабарлаңыз, сайт жаңартылады.</p>
-    </section>
+  <iframe src="https://2gis.kz/taraz/geo/70000001051334510/71.364836,42.894600" allowfullscreen></iframe>
 
-    <section class="rsvp glass fade-up delay-4">
-      <h2>RSVP — Қатысу/Қатыспау</h2>
-      <p>Өз атыңды жазып, келетінін не келмейтінін белгілеңіз. Сондай-ақ WhatsApp арқылы хабарлама жіберіледі.</p>
-      <input id="guest-name" type="text" placeholder="Аты-жөніңіз (міндетті)" />
-      <div class="rsvp-buttons">
-        <button id="coming" class="btn success">Келемін</button>
-        <button id="not-coming" class="btn danger">Келе алмаймын</button>
-      </div>
-      <p id="rsvp-result" class="result"></p>
-    </section>
+  <footer>© 2025 Ержан & Аяжанның Тойы 💍</footer>
 
-    <section class="guest-list glass fade-up delay-5">
-      <h3>Қонақтар — Жеке көрініс (авторға арналған)</h3>
-      <p class="small">Ескерту: автоматты тізім тек rsvpEndpoint орнатқанда толтырылады.</p>
-      <div id="guest-lists" class="lists">
-        <div><h4>Келетіндер</h4><ul id="list-coming"></ul></div>
-        <div><h4>Келмейтіндер</h4><ul id="list-notcoming"></ul></div>
-      </div>
-    </section>
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-    <footer class="credits">
-      <p>Жасалған — <strong>ToiPro</strong> (автор: сен) • GitHub Pages арқылы тегін жариялау</p>
-    </footer>
-  </main>
+  <script>
+    // Гүл анимациясы
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.textContent = '🌸';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 10000);
+    }
+    setInterval(createPetal, 500);
 
-  <audio id="bg-music" loop crossorigin="anonymous"></audio>
+    // Санау таймері
+    const countdown = document.getElementById('countdown');
+    const weddingDate = new Date("2025-10-01T18:00:00").getTime();
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "🎉 Той басталып кетті!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      countdown.innerHTML = `⏳ Тойға дейін: ${days} күн, ${hours} сағат, ${minutes} минут`;
+    }, 1000);
+
+    // Пікір жауап
+    function respond(answer) {
+      document.getElementById('response').innerHTML = `<p style="color:#b8860b; margin-top:20px;">Жауабыңыз қабылданды: <b>${answer}</b></p>`;
+    }
+  </script>
 </body>
 </html>
